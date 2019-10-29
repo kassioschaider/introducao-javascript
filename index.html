@@ -10,9 +10,6 @@
 	</head>
 	<body>
 
-		<script>
-			console.log("Olá mundo!");
-		</script>
 		<header>
 			<div class="container">
 				<h1>Aparecida Nutrição</h1>
@@ -75,6 +72,13 @@
 
 			</section>
 		</main>
+
+		<script>
+			var titulo = document.querySelector("h1");
+			console.log(titulo.textContent);
+			titulo.textContent = "Aparecida Nutricionista"
+			console.log(titulo.textContent);
+		</script>
 
 	</body>
 </html>
