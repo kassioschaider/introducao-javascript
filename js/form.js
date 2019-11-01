@@ -50,14 +50,18 @@ var botaoAdicionar = document.querySelector("#adicionar-paciente");
             return;
         }
 
-        var pacienteTr = montaTr(paciente);
-        var tabela = document.querySelector("#tabela-pacientes");
-        tabela.appendChild(pacienteTr);
+        adicionaPacienteNaTabela(paciente);
         form.reset();
 
         var mensagensErro = document.querySelector("#mensagens-erro");
         mensagensErro.innerHTML = "";
 });
+
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 function exibeMensagensDeErro(erros) {
     var ul = document.querySelector("#mensagens-erro");
@@ -100,7 +104,7 @@ function montaTr(paciente) {
     pacienteTr.appendChild(montaTd(paciente.altura, "info-altura"));
     pacienteTr.appendChild(montaTd(paciente.gordura, "info-gordura"));
     pacienteTr.appendChild(montaTd(paciente.imc, "info-imc"));
-    pacienteTr.appendChild(montaTd(paciente.classificacao, "info-classificacao"));
+    pacienteTr.appendChild(montaTd(calculaClassificacao(calculaImc(paciente.peso, paciente.altura)), "info-classificacao"));
 
     return pacienteTr;  
 }
